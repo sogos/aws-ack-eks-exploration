@@ -1,6 +1,9 @@
-# Welcome to your CDK Java project!
+# AWS ACK Experimentation
 
-This is a blank project for CDK development with Java.
+This is a project that aims to explore AWS ACK (Amazon Controller for Kubernetes) and test its operation.
+
+The goal is to create a Kubernetes cluster with custom AWS resources which are managed by AWS ACK.
+(S3 Buckets, RDS Instances, etc.)
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
@@ -15,4 +18,4 @@ It is a [Maven](https://maven.apache.org/) based project, so you can open this p
  * `cdk diff`        compare deployed stack with current state
  * `cdk docs`        open CDK documentation
 
-Enjoy!
+Enjoy! and feel free to contribute.
