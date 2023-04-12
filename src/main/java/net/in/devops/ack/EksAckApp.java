@@ -1,16 +1,13 @@
-package com.myorg;
+package net.in.devops.ack;
 
 import software.amazon.awscdk.App;
-import software.amazon.awscdk.Environment;
 import software.amazon.awscdk.StackProps;
 
-import java.util.Arrays;
-
-public class EksCkaApp {
+public class EksAckApp {
     public static void main(final String[] args) {
         App app = new App();
 
-        new EksCkaStack(app, "EksCkaStack", StackProps.builder()
+        new EksAckStack(app, "EksAckStack", StackProps.builder()
                 // If you don't specify 'env', this stack will be environment-agnostic.
                 // Account/Region-dependent features and context lookups will not work,
                 // but a single synthesized template can be deployed anywhere.
