@@ -45,6 +45,19 @@ public class S3AckController extends Stack {
                 .managedPolicies(List.of(
                         ManagedPolicy.fromAwsManagedPolicyName("AmazonS3FullAccess")
                 ))
+                .inlinePolicies(Map.of(
+                        "aws-ack-s3-policy", PolicyDocument.Builder.create()
+                                .statements(List.of(
+                                        PolicyStatement.Builder.create()
+                                                .actions(List.of(
+                                                        "sts:AssumeRole"
+                                                ))
+                                                .resources(List.of("arn:aws:iam::*:role/ACK-*")
+                                                )
+                                                .build()
+                                ))
+                                .build()
+                ))
                 .build();
 
 

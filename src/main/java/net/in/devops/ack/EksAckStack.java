@@ -2,7 +2,7 @@ package net.in.devops.ack;
 
 import net.in.devops.ack.addons.ebs.EbsCsiAddon;
 import net.in.devops.ack.controllers.S3AckController;
-import net.in.devops.ack.ressources.TestBucket;
+import net.in.devops.ack.tools.ArgoCd;
 import software.amazon.awscdk.*;
 import software.amazon.awscdk.cdk.lambdalayer.kubectl.v25.KubectlV25Layer;
 import software.amazon.awscdk.services.ec2.InstanceClass;
@@ -63,16 +63,6 @@ public class EksAckStack extends Stack {
                 .build();
 
 
-        /*new OpenIdConnectProvider(
-                this,
-                "eks-oidc-connect-provider",
-                OpenIdConnectProviderProps.builder()
-                        .url(eksCluster.getClusterOpenIdConnectIssuerUrl())
-                        .build()
-        );
-         */
-
-
         eksCluster.addNodegroupCapacity("eks-ack-arm-ng", NodegroupOptions
                 .builder()
                 .capacityType(CapacityType.SPOT)
@@ -116,7 +106,6 @@ public class EksAckStack extends Stack {
         );
 
         new S3AckController(this, eksCluster, ackNamespace);
-
-        new TestBucket(this, eksCluster, ackNamespace);
+        new ArgoCd(this, eksCluster);
     }
 }
