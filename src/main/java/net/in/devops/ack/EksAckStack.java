@@ -2,9 +2,7 @@ package net.in.devops.ack;
 
 import net.in.devops.ack.addons.ebs.EbsCsiAddon;
 import net.in.devops.ack.controllers.S3AckController;
-import net.in.devops.ack.tools.ArgoCd;
-import net.in.devops.ack.tools.AwsBatch;
-import net.in.devops.ack.tools.FluentBit;
+import net.in.devops.ack.tools.*;
 import software.amazon.awscdk.*;
 import software.amazon.awscdk.cdk.lambdalayer.kubectl.v25.KubectlV25Layer;
 import software.amazon.awscdk.services.ec2.InstanceClass;
@@ -134,10 +132,11 @@ public class EksAckStack extends Stack {
         );
 
         new S3AckController(this, eksCluster, ackNamespace);
-
         new ArgoCd(this, eksCluster);
         new FluentBit(this, eksCluster);
         new AwsBatch(this, eksCluster, instanceRole);
+        new ArgoWorkflows(this, eksCluster);
+        new ArgoEvents(this, eksCluster);
 
 
     }
