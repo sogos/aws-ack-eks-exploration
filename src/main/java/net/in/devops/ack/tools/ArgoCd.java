@@ -9,6 +9,7 @@ public class ArgoCd {
     public ArgoCd(Stack stack, Cluster cluster) {
 
         HelmChart.Builder.create(stack, "argocd")
+                //.release("argocd")
                 .cluster(cluster)
                 .chart("argo-cd")
                 .repository("https://argoproj.github.io/argo-helm")
